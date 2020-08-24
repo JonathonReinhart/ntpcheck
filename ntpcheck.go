@@ -121,6 +121,11 @@ func check(host string) {
 }
 
 func main() {
+    hosts := os.Args[1:]
+    if len(hosts) == 0 {
+        fmt.Fprintln(os.Stderr, "Usage: ntpcheck HOST...")
+        os.Exit(1)
+    }
     for _, host := range os.Args[1:] {
         check(host)
     }
